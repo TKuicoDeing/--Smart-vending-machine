@@ -1,0 +1,215 @@
+商品庫存與購買
+----------------------------
+main.cpp
+----------------------------
+#include <iostream>
+#include <iomanip>
+#include <conio.h>
+#include <string>
+#include "Account.h"
+#include "Product.h"
+using namespace std;
+void hidepassword() {
+	const int NUMBER = 30;
+	const int ENTER = 13;
+	char key;
+	char password[NUMBER];
+	int countx = 0;
+	while ((key = _getch()) != ENTER && countx < 20) {
+		password[countx] = (char)key;
+		if (key == '\b') {
+			cout << '\b' << ' ' << '\b';
+			if (countx - 1 > 0) { countx--; }
+			else { countx = 0; }
+		}
+		else if (key >= '!' && key <= 'z') {
+			cout << '*';
+			countx++;
+		}
+	}
+	cout << endl;
+	if (countx >= 20) {
+		cout << "輸入超過20個字元！" << endl;
+	}
+	password[countx] = '\0';
+
+}
+
+int main() {
+	//創建帳號密碼
+
+	Account account;
+	cout << "創建少於等於20字元的帳號:";
+	account.Accountcheck();
+
+	cout << "請創建少於等於20字元的密碼:";
+	hidepassword();
+	account.Cleanscreen();
+
+	//確認密碼
+
+
+
+
+	// 創建商品陣列
+	Product products[] = {
+		Product("Potato Chips", 35, 10),
+		Product("Mlik", 45, 10),
+		Product("Cola", 25, 10),
+		Product("Black tea", 20, 10)
+	};
+
+	// 顯示商品列表
+	cout << "商品列表:" << endl;
+	for (int i = 0; i < sizeof(products) / sizeof(products[0]); i++) {
+		cout << products[i].getName() << "$" << products[i].getPrice() << endl;
+	}
+
+	// 讓使用者選擇商品
+	cout << "選擇商品: ";
+	string choice;
+	getline(cin, choice);
+	system("cls");
+
+	// 顯示商品庫存
+	int stock = 0;
+	for (int i = 0; i < sizeof(products) / sizeof(products[0]); i++) {
+		if (products[i].getName() == choice) {
+			stock = products[i].getStock();
+			cout << "商品庫存:" << stock << endl;
+			break;
+		}
+	}
+
+	// 讓使用者輸入購買數量
+	cout << "購買數量: ";
+	int quantity;
+	cin >> quantity;
+
+	// 更新庫存量並顯示商品購買明細
+	for (int i = 0; i < sizeof(products) / sizeof(products[0]); i++) {
+		if (products[i].getName() == choice) {
+			if (quantity > products[i].getStock()) {
+				cout << "庫存不足" << endl;
+			}
+			else {
+				products[i].setStock(products[i].getStock() - quantity);
+				cout << choice << "*" << quantity << ": $" << fixed << setprecision(2) << products[i].getPrice() * quantity << endl;
+				cout << "商品剩餘:" << products[i].getStock() << endl;
+			}
+			break;
+		}
+	}
+
+
+}
+---------------------------------
+Account.cpp
+---------------------------------
+
+#include <iostream>
+#include <string>
+#include"Account.h"
+using namespace std;
+
+string Account::success() {
+	return 0;
+}
+
+void Account::Accountcheck() {
+	string play, Acc = "";
+
+	while (true) {
+		getline(cin, Acc);
+		if (Acc.empty()) {
+			Cleanscreen();
+			break;
+		}
+		else if (Acc.size() > 20) {
+			cout << endl << "這位客人，是不是說最多20字元 :)" << endl;
+			getline(cin, play);
+			if (play.empty())
+				cout << "回去重設 :))";
+		}
+		exit(0);
+	}
+}
+void Account::Cleanscreen() {
+	system("cls");
+}
+------------------------------
+Account.h
+------------------------------
+
+#ifndef HI
+#define HI
+#include <string>
+using namespace std;
+class Account {
+private:
+	string userid;
+	string password;
+public:
+	string success();
+	void Accountcheck();
+	void Cleanscreen();
+};
+
+
+#endif
+
+--------------------------------
+Product.h
+--------------------------------
+
+#ifndef PRODUCT_H
+#define PRODUCT_H
+
+#include <string>
+using namespace std;
+class Product {
+public:
+    Product(string name, double price, int stock);
+    string getName() const;
+    double getPrice() const;
+    int getStock() const;
+    void setStock(int stock);
+
+private:
+    string name;
+    double price;
+    int stock;
+};
+
+#endif
+
+--------------------------------
+Product.cpp
+--------------------------------
+
+#include "Product.h"
+
+Product::Product(std::string name, double price, int stock) {
+    this->name = name;
+    this->price = price;
+    this->stock = stock;
+}
+
+std::string Product::getName() const {
+    return name;
+}
+
+double Product::getPrice() const {
+    return price;
+}
+
+int Product::getStock() const {
+    return stock;
+}
+
+void Product::setStock(int stock) {
+    this->stock = stock;
+}
+
+
+
