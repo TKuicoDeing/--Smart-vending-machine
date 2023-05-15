@@ -1,0 +1,190 @@
+{Product.h}
+
+#ifndef PRODUCT_H
+#define PRODUCT_H
+
+#include <string>
+using namespace std;
+class Product {
+public:
+    Product(string name, string EnglishName, double price, int stock, string unit, string EnglishUnit);
+    string getName() const;
+    string getEnglishName() const;
+    double getPrice() const;
+    int getStock() const;
+    void setStock(int stock);
+    string getUnit() const;
+    string getEnglishUnit() const;
+    int getUserChoice(int size);
+    void displayMenu(bool isEnglish, const Product* products, int numProducts);
+    void updateStock(int quantity);
+private:
+    string name;
+    string englishName;
+    double price;
+    int stock;
+    string unit;
+    string EnglishUnit;
+};
+
+#endif
+
+
+{Product.cpp}
+
+#include "Product.h"
+#include <iostream>
+using namespace std;
+
+Product::Product(string name, string englishName, double price, int stock, string unit, string englishUnit) {
+    this->name = name;
+    this->englishName = englishName;
+    this->price = price;
+    this->stock = stock;
+    this->unit = unit;
+    this->EnglishUnit = englishUnit; 
+}
+
+string Product::getName() const {
+    return name;
+}
+string Product::getEnglishName() const {
+    return englishName;
+}
+
+double Product::getPrice() const {
+    return price;
+}
+
+int Product::getStock() const {
+    return stock;
+}
+
+void Product::setStock(int stock) {
+    this->stock = stock;
+}
+
+int Product::getUserChoice(int size) {
+    int choice;
+    cout << "選擇商品編號: ";
+    cin >> choice;
+    while (choice < 1 || choice > size) {
+        cout << "無效的選擇。請重新輸入: ";
+        cin >> choice;
+    }
+    return choice - 1; // 將索引轉換為陣列索引
+}
+void Product::displayMenu(bool isEnglish, const Product* products, int numProducts) {
+    cout << (isEnglish ? "Product Menu:" : "商品選單:") << endl;
+    for (int i = 0; i < numProducts; i++) {
+        cout << i + 1 << ". " << (isEnglish ? products[i].getEnglishName() : products[i].getName()) << " $" << products[i].getPrice() << endl;
+    }
+}
+void Product::updateStock(int quantity) {
+    stock -= quantity;
+}
+string Product::getUnit() const {
+    return unit;
+}
+string Product::getEnglishUnit()const {
+    return EnglishUnit;
+}
+
+
+{main.cpp}
+
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include "Product.h"
+
+using namespace std;
+
+// 取得使用者選擇的商品索引
+int getUserChoice(int size, bool isEnglish) {
+    int choice;
+    cout << (isEnglish ? "Select product number: " : "選擇商品編號: ");
+    cin >> choice;
+    while (choice < 1 || choice > size) {
+        cout << (isEnglish ? "Invalid choice. Please re-enter: " : "無效的選擇。請重新輸入: ");
+        cin >> choice;
+    }
+    return choice - 1; // 將索引轉換為陣列索引
+}
+
+int main() {
+    bool isEnglish = false; // 初始語言為中文
+    
+    // 創建商品陣列
+    Product products[] = {
+        Product("運動飲料", "Energy Drink", 25, 10,"瓶","bottles of"),
+        Product("牛奶", "Milk", 45, 10,"瓶","bottles of"),
+        Product("可樂", "Cola", 25, 10,"罐","cans of"),
+        Product("紅茶", "Black Tea", 20, 10,"瓶","bottlse of"),
+        Product("雪碧", "Sprite", 25, 10,"罐","cans of"),
+        Product("薯片", "Chips", 35, 10,"包","packets of"),
+        Product("巧克力","Chocolate",39,10,"片","pieces of"),
+        Product("點心麵","Noodle Snack",30,10,"包","packets of"),
+        Product("口香糖","Chewing Gum",40,10,"包","packets of"),
+        Product("泡麵","Instant Noodle",30,10,"碗","bowls of"),
+    };
+
+    int numProducts = sizeof(products) / sizeof(products[0]);// 計算商品陣列的大小
+    
+    // 語言選擇
+    int languageChoice;
+    cout << "Select language (選擇語言):" << endl;
+    cout << "1. English" << endl;
+    cout << "2. 中文" << endl;
+    cout << "Choice (選擇): ";
+    cin >> languageChoice;
+
+    while (languageChoice != 1 && languageChoice != 2) {
+        cout << "Invalid choice. Please re-enter: ";
+        cin >> languageChoice;
+    }
+
+    isEnglish = (languageChoice == 1);
+
+
+    // 顯示商品選單
+    products[0].displayMenu(isEnglish, products, numProducts);
+
+
+    // 讓使用者選擇商品
+    int choiceIndex = getUserChoice(numProducts, isEnglish);
+    string choice = products[choiceIndex].getName();
+
+    // 顯示商品庫存
+    int stock = products[choiceIndex].getStock();
+    cout << (isEnglish ? "Stock: " : "商品庫存: ") << stock << endl;
+
+    // 讓使用者輸入購買數量
+    int quantity;
+    cout << (isEnglish ? "Quantity: " : "購買數量: ");
+    cin >> quantity;
+
+    // 計算總價格並顯示購買明細
+    int totalPrice = products[choiceIndex].getPrice() * quantity;
+    string productName = isEnglish ? products[choiceIndex].getEnglishName() : products[choiceIndex].getName();
+    string productUnit = isEnglish ? products[choiceIndex].getEnglishUnit() : products[choiceIndex].getUnit(); 
+    cout << (isEnglish ? "You bought " : "您購買了 ") << quantity << " " << productUnit << " " << productName
+        << "，" << (isEnglish ? "and the total consumption is " : "總共消費 ") << totalPrice << " " << (isEnglish ? "dollars" : "元") << endl;
+
+
+
+    // 更新商品庫存
+    products[choiceIndex].updateStock(quantity);
+
+
+
+    // 更新庫存量並顯示商品購買明細
+    if (quantity > stock) {
+        cout << (isEnglish ? "Insufficient stock" : "庫存不足") << endl;
+    }
+    else {
+        products[choiceIndex].setStock(stock - quantity);
+        cout << (isEnglish ? "Remaining stock: " : "商品剩餘: ") << products[choiceIndex].getStock() << endl;
+    }
+    return 0;
+}
