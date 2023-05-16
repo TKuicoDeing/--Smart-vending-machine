@@ -1,86 +1,58 @@
-// COST.h
-#ifndef COST_H
-#define COST_H
 
-class COST {
+//.h
+
+#ifndef Cost_H
+#define Cost_H
+
+class Cost {
 private:
-    int totalCoins;
-    int productPrice;
+    int money; // 存放投幣金額
 
 public:
-    COST(int price);
-    void insertCoin(int coin);
-    void purchaseProduct();
-    int getSpread() const;
-    int returnAmount();
+    Cost(); // 構造函數
+
+    void addMoney(int inputMoney); // 添加金額
+    void getSpread(); // 找零並輸出狀態
+    int returnAmount(); // 返回當前餘額
 };
 
 #endif
 
-// COST.cpp
-#include "COST.h"
+//.cpp
+
+#include "Cost.h"
 #include <iostream>
+#include <cstdlib> // 用於清除屏幕的system("cls")
 using namespace std;
 
-COST::COST(int price) {
-    totalCoins = 0;
-    productPrice = price;
+Cost::Cost() {
+    money = 0;
 }
 
-void COST::insertCoin(int coin) {
-    totalCoins += coin;
+void Cost::addMoney(int inputMoney) {
+    money += inputMoney;
+    system("cls");
+    cout << "Money: " << money << endl;
 }
 
-void COST::purchaseProduct() {
-    if (totalCoins >= productPrice) {
-        int change = totalCoins - productPrice;
-        cout << "購買成功！" << endl;
-        if (change > 0) {
-            cout << "找零：" << change << "元" << endl;
-        }
-        totalCoins = 0;
-    } else {
-        cout << "投入金額不足，請投入更多硬幣" << endl;
-    }
+void Cost::getSpread() {
+    int a = money; // 保存進入時的狀態
+    int newMoney = 0;
+
+    // 執行找零操作，這裡簡單示意為將金額清零
+    newMoney = money;
+    money = 0;
+
+    system("cls");
+    cout << "Previous amount: " << a << endl;
+    cout << "Change given: " << newMoney << endl;
 }
 
-int COST::getSpread() const {
-    return totalCoins - productPrice;
+int Cost::returnAmount() {
+    return money;
 }
 
-int COST::returnAmount() {
-    int change = totalCoins;
-    totalCoins = 0;
-    return change;
-}
 
-// main.cpp
-#include "COST.h"
-#include <iostream>
 
-int main() {
-    int productPrice;
-    cout << "請輸入商品價格：";
-    cin >> productPrice;
 
-    COST COST(productPrice);
 
-    int coin;
-    while (true) {
-        cout << "請投入硬幣（輸入0結束投幣）：";
-        cin >> coin;
-        if (coin == 0) {
-            break;
-        }
-        COST.insertCoin(coin);
-    }
-
-    COST.purchaseProduct();
-    int spread = COST.getSpread();
-    int returnedAmount = COST.returnAmount();
-
-   cout << "找零金額：" << spread << "元" << endl;
-   cout << "退還金額：" << returnedAmount << "元" << endl;
-
-    return 0;
-}
