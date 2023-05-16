@@ -20,6 +20,7 @@ public:
 // COST.cpp
 #include "COST.h"
 #include <iostream>
+using namespace std;
 
 COST::COST(int price) {
     totalCoins = 0;
@@ -33,13 +34,13 @@ void COST::insertCoin(int coin) {
 void COST::purchaseProduct() {
     if (totalCoins >= productPrice) {
         int change = totalCoins - productPrice;
-        std::cout << "購買成功！" << std::endl;
+        cout << "購買成功！" << endl;
         if (change > 0) {
-            std::cout << "找零：" << change << "元" << std::endl;
+            cout << "找零：" << change << "元" << endl;
         }
         totalCoins = 0;
     } else {
-        std::cout << "投入金額不足，請投入更多硬幣" << std::endl;
+        cout << "投入金額不足，請投入更多硬幣" << endl;
     }
 }
 
@@ -59,15 +60,15 @@ int COST::returnAmount() {
 
 int main() {
     int productPrice;
-    std::cout << "請輸入商品價格：";
-    std::cin >> productPrice;
+    cout << "請輸入商品價格：";
+    cin >> productPrice;
 
     COST COST(productPrice);
 
     int coin;
     while (true) {
-        std::cout << "請投入硬幣（輸入0結束投幣）：";
-        std::cin >> coin;
+        cout << "請投入硬幣（輸入0結束投幣）：";
+        cin >> coin;
         if (coin == 0) {
             break;
         }
@@ -78,8 +79,8 @@ int main() {
     int spread = COST.getSpread();
     int returnedAmount = COST.returnAmount();
 
-    std::cout << "找零金額：" << spread << "元" << std::endl;
-    std::cout << "退還金額：" << returnedAmount << "元" << std::endl;
+   cout << "找零金額：" << spread << "元" << endl;
+   cout << "退還金額：" << returnedAmount << "元" << endl;
 
     return 0;
 }
