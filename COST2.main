@@ -13,7 +13,7 @@ int main() {
         cout << "2. 找錢" << endl;
         cout << "3. 查看餘額" << endl;
         cout << "4. 離開" << endl;
-        cout << "輸入要執行選想的代號: ";
+        cout << "輸入要執行選項的代號: ";
         cin >> option;
 
         switch (option) {
