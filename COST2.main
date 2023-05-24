@@ -4,6 +4,8 @@ using namespace std;
 
 int main() {
    
+   int customerPayment = 0;
+   
     Cost cost;
 
     while (customerPayment < productPrice) {
