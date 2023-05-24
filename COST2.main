@@ -6,7 +6,7 @@ int main() {
    
     Cost cost;
 
-    while (payment < productPrice) {
+    while (customerPayment < productPrice) {
         int money;
         cout << "投幣: ";
         cin >> money;
@@ -16,11 +16,11 @@ int main() {
             continue;
         }
 
-        payment += money;
-        cout << "已投入金額: " << payment << endl;
+        customerPayment += money;
+        cout << "已投入金額: " << customerPayment << endl;
     }
 
-    int change = payment - productPrice;
+    int change = customerPayment - productPrice;
     if (change > 0) {
         cout << "Change: " << change << endl;
         cost.addMoney(change);
