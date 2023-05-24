@@ -22,8 +22,8 @@ void Cost::getSpread() {
     money = 0;
 
     system("cls");
-    cout << "Previous amount: " << a << endl;
-    cout << "Change given: " << newMoney << endl;
+    cout << "上一筆金額: " << a << endl;
+    cout << "找錢: " << newMoney << endl;
 }
 
 int Cost::returnAmount() {
