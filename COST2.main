@@ -3,39 +3,30 @@
 using namespace std;
 
 int main() {
+   
     Cost cost;
 
-    int option;
-    int money;
+    while (customerPayment < productPrice) {
+        int money;
+        cout << "投幣: ";
+        cin >> money;
 
-    while (true) {
-        cout << "1. 投錢" << endl;
-        cout << "2. 找錢" << endl;
-        cout << "3. 查看餘額" << endl;
-        cout << "4. 離開" << endl;
-        cout << "輸入要執行選項的代號: ";
-        cin >> option;
-
-        switch (option) {
-        case 1:
-            cout << "輸入金額: ";
-            cin >> money;
-            cost.addMoney(money);
-            break;
-        case 2:
-            cost.getSpread();
-            break;
-        case 3:
-            cout << "當前餘額: " << cost.returnAmount() << endl;
-            break;
-        case 4:
-            cout << "離開: "  << endl;
-            exit(0);
-        default:
-            cout << "選項無效，請再式一次" << endl;
-            break;
+        if (money <= 0) {
+            cout << "請重新投幣" << endl;
+            continue;
         }
+
+        customerPayment += money;
+        cout << "已投入金額: " << customerPayment << endl;
     }
+
+    int change = customerPayment - productPrice;
+    if (change > 0) {
+        cout << "Change: " << change << endl;
+        cost.addMoney(change);
+    }
+
+    cost.getSpread();
 
     return 0;
 }
