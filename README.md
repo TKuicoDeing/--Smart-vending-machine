@@ -1,7 +1,6 @@
 # Smart-vending-machine
 ### 資工1B 第十二組
 ### *蔡承奎 童冠晨 黃彥慈
-
 ### Program introduction
 #####這段程式是一個簡易的智慧販賣機
 #####目前也沒有能力使用資料庫做後台
