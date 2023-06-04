@@ -32,23 +32,18 @@ void Product::setStock(int stock) {
 
 int Product::getUserChoice(int size) {
 	int choice;
-	cout << "¿ï¾Ü°Ó«~½s¸¹: ";
+	cout << "é¸æ“‡å•†å“ç·¨è™Ÿ: ";
 	cin >> choice;
 	while (choice < 1 || choice > size) {
-		cout << "µL®Äªº¿ï¾Ü¡C½Ð­«·s¿é¤J: ";
+		cout << "ç„¡æ•ˆçš„é¸æ“‡ã€‚è«‹é‡æ–°è¼¸å…¥: ";
 		cin >> choice;
 	}
-	return choice - 1; // ±N¯Á¤ÞÂà´«¬°°}¦C¯Á¤Þ
+	return choice - 1;
 }
 void Product::displayMenu(bool isEnglish, const Product* products, int numProducts) {
-	cout << (isEnglish ? "Product Menu:" : "°Ó«~¿ï³æ:") << endl;
+	cout << (isEnglish ? "Product Menu:" : "å•†å“é¸å–®:") << endl;
 	for (int i = 0; i < numProducts; i++) {
-		if (i == 9) {
-			cout << i + 1 << "| " << (isEnglish ? products[i].getEnglishName() : products[i].getName()) << " $" << products[i].getPrice() << endl;
-			break;
-		}
-		cout << i + 1 << " | " << (isEnglish ? products[i].getEnglishName() : products[i].getName()) << " $" << products[i].getPrice() << endl;
-
+		cout << i + 1 << ". " << (isEnglish ? products[i].getEnglishName() : products[i].getName()) << " $" << products[i].getPrice() << endl;
 	}
 }
 void Product::updateStock(int quantity) {
