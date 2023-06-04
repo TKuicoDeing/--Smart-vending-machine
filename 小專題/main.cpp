@@ -108,7 +108,7 @@ int main() {
 		double totalPrice = products[choiceIndex].getPrice() * quantity;
 		int T = 0;
 		// 檢查庫存
-		if (quantity > stock) {
+		if (quantity > stock || quantity == 0) {
 			T++;
 			cout << (isEnglish ? "Inventory shortage.Please select a different quantity for the item. " : "庫存不足，請重新選擇商品數量!") << endl;
 			this_thread::sleep_for(chrono::seconds(1));
@@ -116,7 +116,7 @@ int main() {
 				cout << (isEnglish ? "Please enter again ! : " : "請重輸一次: ") << endl;
 				account.Fluent();
 				cin >> Tquantity;
-				if (Tquantity > stock)
+				if (Tquantity > stock || Tquantity == 0)
 					cout << (isEnglish ? "not enough= = : " : "就不夠吼= =") << endl;
 			}
 			totalPrice = products[choiceIndex].getPrice() * Tquantity;
