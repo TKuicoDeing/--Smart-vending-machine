@@ -12,16 +12,16 @@ using namespace std;
 int getUserChoice(int, bool);
 
 int main() {
-	//³Ğ«Ø±b¸¹±K½X
+	//å‰µå»ºå¸³è™Ÿå¯†ç¢¼
 	Account account;
-	cout << "³Ğ«Ø¤Ö©óµ¥©ó20¦r¤¸ªº±b¸¹:";
+	cout << "å‰µå»ºå°‘æ–¼ç­‰æ–¼20å­—å…ƒçš„å¸³è™Ÿ:";
 	account.IDcheck();
 
-	cout << "½Ğ³Ğ«Ø¤Ö©óµ¥©ó15¦r¤¸ªº±K½X:";
+	cout << "è«‹å‰µå»ºå°‘æ–¼ç­‰æ–¼15å­—å…ƒçš„å¯†ç¢¼:";
 	account.hidepassword();
 	account.Cleanscreen();
 	int a = account.getNumber();
-	//½T»{±K½X
+	//ç¢ºèªå¯†ç¢¼
 	char* wd = account.getpassword();
 	string s = "";
 
@@ -29,52 +29,52 @@ int main() {
 		s += wd[i];
 
 	string checkwd, doublecheck;
-	cout << "²{¦b§Ú­n½T»{§A¬O" << account.getuserid() << "ªº¾Ö¦³ªÌ" << endl;
-	cout << "±K½X-->";
+	cout << "ç¾åœ¨æˆ‘è¦ç¢ºèªä½ æ˜¯" << account.getuserid() << "çš„æ“æœ‰è€…" << endl;
+	cout << "å¯†ç¢¼-->";
 	cin >> checkwd;
 	if (checkwd == s)
-		cout << "½æ¤è©¾§i : ¶R¶V¦hÁ«ªº¶V¦h" << endl;
+		cout << "è³£æ–¹å¿ å‘Š : è²·è¶Šå¤šè™§çš„è¶Šå¤š" << endl;
 	else if (checkwd != s) {
 
-		cout << "§Ú°O±o§A5¬í«e³]©w¹L.." << endl;
-		cout << "­«·s¿é¤@¦¸§a(½Ğµyµ¥)" << endl;
+		cout << "æˆ‘è¨˜å¾—ä½ 5ç§’å‰è¨­å®šé.." << endl;
+		cout << "é‡æ–°è¼¸ä¸€æ¬¡å§(è«‹ç¨ç­‰)" << endl;
 		account.Fluent();
 		cin >> doublecheck;
 		if (doublecheck == s) {
-			cout << "§Æ±æ¤U¦¸¨£¨ì§A¡A§Aªº°O¾Ğ¤O¯à¶W¶Vª÷³½" << endl;
+			cout << "å¸Œæœ›ä¸‹æ¬¡è¦‹åˆ°ä½ ï¼Œä½ çš„è¨˜æ†¶åŠ›èƒ½è¶…è¶Šé‡‘é­š" << endl;
 		}
 		else if (doublecheck != s) {
-			cout << "ÕÙ¦Ñ­ô..«ô°U¤@¤U" << endl;
+			cout << "æ¬¸è€å“¥..æ‹œè¨—ä¸€ä¸‹" << endl;
 			exit(0);
 		}
 
 	}
 	account.Fluent();
 
-	bool isEnglish = false; // ªì©l»y¨¥¬°¤¤¤å
+	bool isEnglish = false; // åˆå§‹èªè¨€ç‚ºä¸­æ–‡
 
-	// ³Ğ«Ø°Ó«~°}¦C
+	// å‰µå»ºå•†å“é™£åˆ—
 	Product products[] = {
-		Product("¹B°Ê¶¼®Æ", "Energy Drink", 25, 10,"²~","bottles of"),
-		Product("¤û¥¤", "Milk", 45, 10,"²~","bottles of"),
-		Product("¥i¼Ö", "Cola", 25, 10,"Åø","cans of"),
-		Product("¬õ¯ù", "Black Tea", 20, 10,"²~","bottlse of"),
-		Product("³·ºÑ", "Sprite", 25, 10,"Åø","cans of"),
-		Product("Á¦¤ù", "Chips", 35, 10,"¥]","packets of"),
-		Product("¥©§J¤O","Chocolate",39,10,"¤ù","pieces of"),
-		Product("ÂI¤ßÄÑ","Noodle Snack",30,10,"¥]","packets of"),
-		Product("¤f­»¿}","Chewing Gum",40,10,"¥]","packets of"),
-		Product("ªwÄÑ","Instant Noodle",30,10,"¸J","bowls of"),
+		Product("é‹å‹•é£²æ–™", " Energy Drink", 25, 10,"ç“¶","bottles of"),
+		Product("ç‰›å¥¶", " Milk", 45, 10,"ç“¶","bottles of"),
+		Product("å¯æ¨‚", " Cola", 25, 10,"ç½","cans of"),
+		Product("ç´…èŒ¶", " Black Tea", 20, 10,"ç“¶","bottlse of"),
+		Product("é›ªç¢§", " Sprite", 25, 10,"ç½","cans of"),
+		Product("è–¯ç‰‡", " Chips", 35, 10,"åŒ…","packets of"),
+		Product("å·§å…‹åŠ›"," Chocolate",39,10,"ç‰‡","pieces of"),
+		Product("é»å¿ƒéºµ"," Noodle Snack",30,10,"åŒ…","packets of"),
+		Product("å£é¦™ç³–"," Chewing Gum",40,10,"åŒ…","packets of"),
+		Product("æ³¡éºµ","Instant Noodle",30,10,"ç¢—","bowls of"),
 	};
 
-	int numProducts = sizeof(products) / sizeof(products[0]);// ­pºâ°Ó«~°}¦Cªº¤j¤p
+	int numProducts = sizeof(products) / sizeof(products[0]);// è¨ˆç®—å•†å“é™£åˆ—çš„å¤§å°
 
-	// »y¨¥¿ï¾Ü
+	// èªè¨€é¸æ“‡
 	int languageChoice;
-	cout << "Select language (¿ï¾Ü»y¨¥):" << endl;
+	cout << "Select language (é¸æ“‡èªè¨€):" << endl;
 	cout << "1. English" << endl;
-	cout << "2. ¤¤¤å" << endl;
-	cout << "Choice (¿ï¾Ü): ";
+	cout << "2. ä¸­æ–‡" << endl;
+	cout << "Choice (é¸æ“‡): ";
 	cin >> languageChoice;
 	account.Fluent();
 
@@ -85,82 +85,114 @@ int main() {
 
 	isEnglish = (languageChoice == 1);
 
+	char continueChoice = 'Y'; // åˆå§‹åŒ–ç¹¼çºŒè³¼è²·çš„é¸æ“‡ç‚º 'Y'
 
-	// Åã¥Ü°Ó«~¿ï³æ
-	products[0].displayMenu(isEnglish, products, numProducts);
+	while (continueChoice == 'Y' || continueChoice == 'y') {
 
+		// é¡¯ç¤ºå•†å“é¸å–®
+		products[0].displayMenu(isEnglish, products, numProducts);
 
-	// Åı¨Ï¥ÎªÌ¿ï¾Ü°Ó«~
-	int choiceIndex = getUserChoice(numProducts, isEnglish);
-	string choice = products[choiceIndex].getName();
+		// é¸æ“‡å•†å“
+		int choiceIndex = getUserChoice(numProducts, isEnglish);
+		string choice = products[choiceIndex].getName();
 
-	// Åã¥Ü°Ó«~®w¦s
-	int stock = products[choiceIndex].getStock();
-	cout << (isEnglish ? "Current stock: " : "¥Ø«e°Ó«~®w¦s: ") << stock << endl;
+		// é¡¯ç¤ºå•†å“åº«å­˜
+		int stock = products[choiceIndex].getStock();
+		cout << (isEnglish ? "Inventory: " : "å•†å“åº«å­˜: ") << stock << endl;
 
-	// Åı¨Ï¥ÎªÌ¿é¤JÁÊ¶R¼Æ¶q
-	int quantity;
-	cout << (isEnglish ? "Purchase quantity: " : "ÁÊ¶R¼Æ¶q: ");
-	cin >> quantity;
-	account.Fluent();
+		// è¼¸å…¥è³¼è²·æ•¸é‡
+		int quantity, Tquantity = 11;
+		cout << (isEnglish ? "Purchase quantity:" : "è³¼è²·æ•¸é‡: ");
+		cin >> quantity;
 
-	// ­pºâÁ`»ù®æ¨ÃÅã¥ÜÁÊ¶R©ú²Ó
-	double totalPrice = products[choiceIndex].getPrice() * quantity;
-	string productName = isEnglish ? products[choiceIndex].getEnglishName() : products[choiceIndex].getName();
-	string productUnit = isEnglish ? products[choiceIndex].getEnglishUnit() : products[choiceIndex].getUnit();
-	cout << (isEnglish ? "You bought " : "±zÁÊ¶R¤F ") << quantity << " " << productUnit << " " << productName
-		<< "¡A" << (isEnglish ? "and the total consumption is " : "Á`¦@®ø¶O ") << totalPrice << " " << (isEnglish ? "dollars" : "¤¸") << endl;
+		double totalPrice = products[choiceIndex].getPrice() * quantity;
+		int T = 0;
+		// æª¢æŸ¥åº«å­˜
+		if (quantity > stock) {
+			T++;
+			cout << (isEnglish ? "Inventory shortage.Please select a different quantity for the item. " : "åº«å­˜ä¸è¶³ï¼Œè«‹é‡æ–°é¸æ“‡å•†å“æ•¸é‡!") << endl;
+			this_thread::sleep_for(chrono::seconds(1));
+			while (Tquantity > stock) {
+				cout << (isEnglish ? "Please enter again ! : " : "è«‹é‡è¼¸ä¸€æ¬¡: ") << endl;
+				account.Fluent();
+				cin >> Tquantity;
+				if (Tquantity > stock)
+					cout << (isEnglish ? "not enough= = : " : "å°±ä¸å¤ å¼= =") << endl;
+			}
+			totalPrice = products[choiceIndex].getPrice() * Tquantity;
+			string productName = isEnglish ? products[choiceIndex].getEnglishName() : products[choiceIndex].getName();
+			string productUnit = products[choiceIndex].getUnit(); // å–å¾—å–®ä½
+			cout << (isEnglish ? "You have purchased " : "æ‚¨è³¼è²·äº† ") << Tquantity << " " << (isEnglish ? products[choiceIndex].getEnglishUnit() : productUnit) << productName
+				<< "ï¼Œ" << (isEnglish ? "The total cost was " : "ç¸½å…±æ¶ˆè²» ") << totalPrice << " " << (isEnglish ? "dollars" : "å…ƒ") << endl;
+		}
+		else if (quantity < stock || Tquantity < stock) {
+			// è¨ˆç®—ç¸½åƒ¹æ ¼ã€é¡¯ç¤ºè³¼è²·æ˜ç´°
 
-	//¥I¿ú
-	int customerPayment = 0;
+			string productName = isEnglish ? products[choiceIndex].getEnglishName() : products[choiceIndex].getName();
+			string productUnit = products[choiceIndex].getUnit(); // å–å¾—å–®ä½
+			cout << (isEnglish ? "You have purchased " : "æ‚¨è³¼è²·äº† ") << quantity << " " << (isEnglish ? products[choiceIndex].getEnglishUnit() : productUnit) << " " << productName
+				<< "ï¼Œ" << (isEnglish ? "The total cost was " : "ç¸½å…±æ¶ˆè²» ") << totalPrice << " " << (isEnglish ? "dollars" : "å…ƒ") << endl;
 
-	Cost cost;
-
-	while (customerPayment < totalPrice) {
-		int money;
-		cout << "§ë¹ô: ";
-		cin >> money;
-
-		if (money <= 0) {
-			cout << "½Ğ­«·s§ë¹ô" << endl;
-			continue;
 		}
 
-		customerPayment += money;
-		cout << "¤w§ë¤Jª÷ÃB: " << customerPayment << endl;
+		//ä»˜éŒ¢
+		int customerPayment = 0;
+		Cost cost;
+
+		while (customerPayment < totalPrice) {
+			int money;
+			cout << "æŠ•å¹£: ";
+			cin >> money;
+
+			if (money <= 0) {
+				cout << "è«‹é‡æ–°æŠ•å¹£" << endl;
+				continue;
+			}
+
+			customerPayment += money;
+			cout << "å·²æŠ•å…¥é‡‘é¡: " << customerPayment << endl;
+		}
+
+		int change = customerPayment - totalPrice;
+		if (change > 0) {
+			cout << "Change: " << change << endl;
+			cost.addMoney(change);
+		}
+
+		cost.getSpread();
+
+		// æ›´æ–°å•†å“åº«å­˜
+		if (T > 0)
+			products[choiceIndex].updateStock(Tquantity);
+		else
+			products[choiceIndex].updateStock(quantity);
+
+		// æ›´æ–°åº«å­˜é‡ä¸¦é¡¯ç¤ºå•†å“è³¼è²·æ˜ç´°
+		if (T > 0)
+			products[choiceIndex].setStock(stock - Tquantity);
+		else
+			products[choiceIndex].setStock(stock - quantity);
+		cout << (isEnglish ? "The remaining quantity of the product: " : "å•†å“å‰©é¤˜: ") << products[choiceIndex].getStock() << endl;
+
+		// è©¢å•æ˜¯å¦ç¹¼çºŒè³¼è²·
+		cout << (isEnglish ? "Would you like to continue shoppingï¼Ÿ(Y/N): " : "æ˜¯å¦è¦ç¹¼çºŒè³¼è²·ï¼Ÿ(Y/N): ");
+		cin >> continueChoice;
+		account.Fluent();
 	}
 
-	int change = customerPayment - totalPrice;
-	if (change > 0) {
-		cout << "Change: " << change << endl;
-		cost.addMoney(change);
-	}
+	cout << (isEnglish ? "Thank you for your visit! You're welcome to come again next time." : "æ„Ÿè¬æ‚¨çš„å…‰è‡¨ï¼Œæ­¡è¿ä¸‹æ¬¡å†ä¾†!") << endl;
 
-	cost.getSpread();
-
-	// §ó·s°Ó«~®w¦s
-	products[choiceIndex].updateStock(quantity);
-
-
-	// §ó·s®w¦s¶q¨ÃÅã¥Ü°Ó«~ÁÊ¶R©ú²Ó
-	if (quantity > stock) {
-		cout << (isEnglish ? "Insufficient stock" : "®w¦s¤£¨¬") << endl;
-	}
-	else {
-		products[choiceIndex].setStock(stock - quantity);
-		cout << (isEnglish ? "Remaining stock: " : "°Ó«~³Ñ¾l: ") << products[choiceIndex].getStock() << endl;
-	}
 	return 0;
 }
 
 int getUserChoice(int size, bool isEnglish) {
 	int choice;
-	cout << (isEnglish ? "Select product number: " : "¿ï¾Ü°Ó«~½s¸¹: ");
+	cout << (isEnglish ? "Select product number: " : "é¸æ“‡å•†å“ç·¨è™Ÿ: ");
 	cin >> choice;
 	while (choice < 1 || choice > size) {
-		cout << (isEnglish ? "Invalid choice. Please re-enter: " : "µL®Äªº¿ï¾Ü¡C½Ğ­«·s¿é¤J: ");
+		cout << (isEnglish ? "Invalid choice. Please re-enter: " : "ç„¡æ•ˆçš„é¸æ“‡ã€‚è«‹é‡æ–°è¼¸å…¥: ");
 		cin >> choice;
 	}
-	return choice - 1; // ±N¯Á¤ŞÂà´«¬°°}¦C¯Á¤Ş
+	return choice - 1; // å°‡ç´¢å¼•è½‰æ›ç‚ºé™£åˆ—ç´¢å¼•
 }
 
