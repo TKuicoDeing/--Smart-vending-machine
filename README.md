@@ -1,3 +1,4 @@
+![螢幕擷取畫面 2023-06-05 212824](https://github.com/TKuicoDeing/--Smart-vending-machine/assets/118408171/a8b002cf-77d7-4073-b231-de8d725560f0)
 # Smart-vending-machine
 ### 資工1B 第十二組
 ### *蔡承奎 童冠晨 黃彥慈
