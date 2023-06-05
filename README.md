@@ -1,4 +1,3 @@
-![螢幕擷取畫面 2023-06-05 212824](https://github.com/TKuicoDeing/--Smart-vending-machine/assets/118408171/a8b002cf-77d7-4073-b231-de8d725560f0)
 # Smart-vending-machine
 ### 資工1B 第十二組
 ### *蔡承奎 童冠晨 黃彥慈
@@ -45,3 +44,5 @@
 ##### 當程式執行結束後，會輸出上一筆投幣金額和找零金額。
 
 ### How to install
+![螢幕擷取畫面 2023-06-05 212824](https://github.com/TKuicoDeing/--Smart-vending-machine/assets/118408171/a8b002cf-77d7-4073-b231-de8d725560f0)
+
