@@ -25,7 +25,7 @@ int main() {
 	char* wd = account.getpassword();
 	string s = "";
 
-	for (int i = 0;i < a;i++)
+	for (int i = 0; i < a; i++)
 		s += wd[i];
 
 	string checkwd, doublecheck;
@@ -55,16 +55,16 @@ int main() {
 
 	// 創建商品陣列
 	Product products[] = {
-		Product("運動飲料", " Energy Drink", 25, 10,"瓶","bottles of"),
-		Product("牛奶", " Milk", 45, 10,"瓶","bottles of"),
-		Product("可樂", " Cola", 25, 10,"罐","cans of"),
-		Product("紅茶", " Black Tea", 20, 10,"瓶","bottlse of"),
-		Product("雪碧", " Sprite", 25, 10,"罐","cans of"),
-		Product("薯片", " Chips", 35, 10,"包","packets of"),
-		Product("巧克力"," Chocolate",39,10,"片","pieces of"),
-		Product("點心麵"," Noodle Snack",30,10,"包","packets of"),
-		Product("口香糖"," Chewing Gum",40,10,"包","packets of"),
-		Product("泡麵","Instant Noodle",30,10,"碗","bowls of"),
+	 Product(" 運動飲料", " Energy Drink", 25, 10,"瓶","bottles of"),
+	 Product(" 牛奶", " Milk", 45, 10,"瓶","bottles of"),
+	 Product(" 可樂", " Cola", 25, 10,"罐","cans of"),
+	 Product(" 紅茶", " Black Tea", 20, 10,"瓶","bottlse of"),
+	 Product(" 雪碧", " Sprite", 25, 10,"罐","cans of"),
+	 Product(" 薯片", " Chips", 35, 10,"包","packets of"),
+	 Product(" 巧克力"," Chocolate",39,10,"片","pieces of"),
+	 Product(" 點心麵"," Noodle Snack",30,10,"包","packets of"),
+	 Product(" 口香糖"," Chewing Gum",40,10,"包","packets of"),
+	 Product("泡麵","Instant Noodle",30,10,"碗","bowls of"),
 	};
 
 	int numProducts = sizeof(products) / sizeof(products[0]);// 計算商品陣列的大小
@@ -76,14 +76,14 @@ int main() {
 	cout << "2. 中文" << endl;
 	cout << "Choice (選擇): ";
 	cin >> languageChoice;
-	account.Fluent();
 
 	while (languageChoice != 1 && languageChoice != 2) {
-		cout << "Invalid choice. Please re-enter: ";
+		cout << "Invalid choice. Please re-enter(無效的選擇。請重新輸入): ";
 		cin >> languageChoice;
 	}
-
 	isEnglish = (languageChoice == 1);
+
+	account.Fluent();
 
 	char continueChoice = 'Y'; // 初始化繼續購買的選擇為 'Y'
 
@@ -190,7 +190,7 @@ int getUserChoice(int size, bool isEnglish) {
 	cout << (isEnglish ? "Select product number: " : "選擇商品編號: ");
 	cin >> choice;
 	while (choice < 1 || choice > size) {
-		cout << (isEnglish ? "Invalid choice. Please re-enter: " : "無效的選擇。請重新輸入: ");
+		cout << ("Invalid choice. Please re-enter(無效的選擇。請重新輸入): ");
 		cin >> choice;
 	}
 	return choice - 1; // 將索引轉換為陣列索引
